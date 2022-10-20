@@ -26,6 +26,12 @@ void main() {
     registerFallbackValue(NumberTriviaModelStub());
   });
 
+  setUp(() {
+    reset(mockNumberTriviaRemoteDataSourced);
+    reset(mockNumberTriviaLocalDataSource);
+    reset(mockNetworkInfo);
+  });
+
   test('get concrete trivia number from cache - data', () async {
     mockNetworkInfo.mockIsConnected(isConnectedFlag: false);
     mockNumberTriviaLocalDataSource.mockLastNumberValue(
@@ -64,6 +70,7 @@ void main() {
       expect(data.number, 1);
     });
     verify(() => mockNumberTriviaRemoteDataSourced.getConcreteNumberTrivia(0)).called(1);
+    verify(() => mockNumberTriviaLocalDataSource.cacheNumberTrivia(any())).called(1);
     verifyNever(
       () => mockNumberTriviaLocalDataSource.getLastNumberTrivia(),
     );

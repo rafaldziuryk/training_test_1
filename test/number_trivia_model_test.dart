@@ -20,4 +20,15 @@ void main() {
     expect(result.number, 0);
     expect(result, isA<NumberTriviaModel>());
   });
+
+  test('parse wity empty dictionary', () {
+    final map = {
+      "text": "TEST1",
+      "number": "chleb",
+    };
+    final result = NumberTriviaModel.fromJson(map);
+    expect(result.text, "TEST1");
+    expect(result.number, 0);
+    expect(result, isA<NumberTriviaModel>());
+  });
 }

@@ -38,7 +38,6 @@ class MockNumberTriviaLocalDataSource extends Mock implements NumberTriviaLocalD
 
   void mockCacheNumberTriviaSuccess() {
     when(() => cacheNumberTrivia(any())).thenAnswer((_) async {});
-    ;
   }
 
   void mockCacheNumberTriviaFailure({required Object error}) {

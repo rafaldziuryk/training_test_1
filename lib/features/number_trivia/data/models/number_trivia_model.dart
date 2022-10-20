@@ -2,9 +2,11 @@ import '../../domain/entities/number_trivia.dart';
 
 class NumberTriviaModel extends NumberTrivia {
   factory NumberTriviaModel.fromJson(Map<String, dynamic> json) {
+    final numberText = json['number'];
+    final number = int.tryParse(numberText.toString()) ?? 0;
     return NumberTriviaModel(
       text: json['text'] ?? "",
-      number: json['number'] != null ? (json['number'] as num).toInt() : 0,
+      number: number,
     );
   }
 
